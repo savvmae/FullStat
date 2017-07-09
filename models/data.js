@@ -29,7 +29,7 @@ const Activity = mongoose.model('Activity', ActivitySchema);
 
 const EntrySchema = new mongoose.Schema({
 
-        date: {type: String, required: true}, 
+        date: {type: Date, required: true}, 
         quantity: {type: Number, required: true},
 });
 

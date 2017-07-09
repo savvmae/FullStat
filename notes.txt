@@ -1,11 +1,9 @@
 TODO::
 
-remove objectid's from parent objects when child is deleted.
-validate date entries??
-finish the last couple routes with status messages and errors
 set up middleware in it's own file??
+break up routes??
 
-
+--------READ ON MONGO BLOG THAT SCHEMAS SHOULD ALWAYS GO IN SEPARATE FILES
 *************************
 probably shouldn't try to tie in front end work right now. unrealistic
 can use postman to test everything
