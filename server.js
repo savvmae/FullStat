@@ -1,4 +1,5 @@
 const express = require('express');
+const path = require('path');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 mongoose.Promise = require('bluebird');
@@ -18,7 +19,7 @@ moment().format();
 
 mongoose.connect('mongodb://localhost:27017/Stats');
 
-application.use(express.static(__dirname + '/public'));
+application.use(express.static(path.join(__dirname, 'client/build')));
 application.use(bodyParser.json());
 
 application.use(passport.initialize());

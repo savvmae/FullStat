@@ -1,4 +1,5 @@
 const express = require('express');
+const path = require('path');
 const route = express.Router();
 const bodyParser = require('body-parser')
 const passportJWT = require("passport-jwt");;
@@ -14,15 +15,19 @@ const jwtOptions = {}
 jwtOptions.jwtFromRequest = ExtractJwt.fromAuthHeader();
 jwtOptions.secretOrKey = 'icanauthenticatestuff';
 
-//does not need api
-route.get('/login', function (request, response) {
-    response.sendFile(__dirname + "/public/login.html");
-});
 
-// does not need /api
-route.get('/signup', function (request, response) {
-    response.sendFile(__dirname + "/public/signup.html");
-});
+// route.get('*', (request, response) => {
+//   response.sendFile(path.join(__dirname+'/client/build/index.html'));
+// });
+//does not need api
+// route.get('/login', function (request, response) {
+//     response.sendFile(__dirname + "/public/login.html");
+// });
+
+// // does not need /api
+// route.get('/signup', function (request, response) {
+//     return response.json({message: "Working!"})
+// });
 
 route.post('/api/signup', async function (request, response) {
     if (request.body.email && request.body.password && request.body.userName) {
