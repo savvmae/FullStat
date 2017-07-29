@@ -1,0 +1,141 @@
+TODO::
+
+set up middleware in it's own file??
+break up routes??
+
+--------READ ON MONGO BLOG THAT SCHEMAS SHOULD ALWAYS GO IN SEPARATE FILES
+*************************
+probably shouldn't try to tie in front end work right now. unrealistic
+can use postman to test everything
+
+*************************
+jsonwebtoken lecture
+*************************
+install jsonwebtoken moment
+
+const jwt = require('jsonwebtoken')
+const moment = require('moment')
+
+//create a payload --- these are the necessary parts
+const payload = {
+    iss: 'http://theironyard.com', (local host)
+    aud: 'TIY Engineers',
+    name: 'George Washington',
+    email: 'george@statesman.com',
+    sub: 'george-washington',
+    iat: moment().unix(),
+    exp: moment().add('24', 'hours').unix()
+    --- can add roles, name, email. etc, use as session
+}
+
+function createToken (user){
+    const payload = {
+        sub: user._id,
+
+    }
+}
+
+//encrypt payload to make a token with a secret
+
+const token = jwt.sign(payload, 'this is really cool')
+
+//decrypt token to extract payload
+
+const decoded = jwt.verify(token, 'this is really cool')
+----- will throw error if bad secret is passed
+
+// console log both toke and decrypted payload
+
+
+//////// cake route
+const express = require('express')
+const router = express.Router()
+const {ensureAuthenticated} = require('./authMiddelware')
+
+router.route('/')
+    .get()
+    .put()
+    .post()
+    .delete()
+
+router.route('/').get(ensureAuthenticated, (req, res) => {
+    res.status(200).send({user: req.user})
+})
+
+router.route('/:cake').get((req,res) => {
+    res.status(200).send({cake: req.params.cake})
+})
+
+module.exports = router
+
+/////// server files
+
+const express= require('express')
+const bodyParser = require('body-parser')
+const app = express()
+const cakeRoutes = require('./cake')
+
+app.use(bodyParser.json())
+
+app.set('port', prcoess.env.PORT || 3000)
+
+app.use('/api/cakes', cakeRoutes)
+
+app.listen(app.get('port'), () => {
+    console.log(`server listening on ${app.get('port')}`);
+});
+
+//////// middleware file - auth
+
+const jwt = require('jsonwebtoken')
+
+function ensureAuthenticated(req, res, next) {
+    if(!req.headers.authorization) {
+        return res.status(401).send({message: 'sorry you lose'});
+    }
+    const token = req.headers.authorization.split(' ')[1];
+    // Bearer fdjslkhjgklfgjdkljdfklhjdklfjsdkjgdksaljfdklgj
+
+    if(!token) {
+        return res.status(401).send({message: 'sorry you lose'});
+    } 
+    const decoded = jwt.verify(token, 'this is really cool')
+    req.user = decoded;
+    next()
+
+}
+
+module.exports = {ensureAuthenticated}
+
+
+
+********************************
+NOTES ON ADDING RELATIONSHIPPED DATA TO DB
+
+// var newUser = new data.users({
+//   userName: "Not Steve",
+//   email: "notsteve@notsteve.com",
+//   password: "1234"
+
+// });
+// newUser.save();
+// var activity1 = new data.activities({
+//   type: "Walking",
+//   description: "how many miles were walked",
+
+// });
+// activity1.save(function (err, data) {
+//   newUser.activities.push(data._id)
+//   newUser.save()
+// });
+
+// var entry1 = new data.entries({
+//   date: moment(),
+//   quantity: 4
+// });
+
+// entry1.save(function (err, data) {
+//   activity1.entries.push(data._id)
+//   activity1.save()
+// })
+
