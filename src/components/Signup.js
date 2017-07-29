@@ -31,16 +31,20 @@ class Signup extends Component {
 
         }).then(serverResponse => {
             if (serverResponse.data.message === "ok") {
+                localStorage.token = serverResponse.data.token;
                 window.location.pathname = '/home';
-
             }
         })
-
+            .catch((err) => {
+                console.log(err.response);
+                this.setState({ error: err.response.data.message })
+            })
     }
     render() {
         return (
             <Layout>
                 <div className="Signup">
+                    {this.state.error ? <h1>error message here </h1> : null}
                     <form onSubmit={this.handleSubmit}>
                         <input onChange={this.handleUN} type="text" name="userName" value={this.state.userName} placeholder="User Name: " />
                         <input onChange={this.handleEmail} type="text" name="email" value={this.state.email} placeholder="Email: " />

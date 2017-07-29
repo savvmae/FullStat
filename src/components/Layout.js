@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
 
+import Header from './Header';
+import Footer from './Footer';
+
+
 export default class Layout extends Component {
     constructor(props) {
         super(props)
@@ -8,11 +12,11 @@ export default class Layout extends Component {
     render() {
         return (
             <div>
-                <h1> Welcome to (think of good name)</h1>
+                <Header />
 
                 {this.props.children}
 
-                <h1>Put footer stuff here</h1>
+                <Footer />
             </div>
         )
     }

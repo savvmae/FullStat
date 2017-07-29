@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Layout from './Layout.js';
 
 import axios from 'axios';
-
+// store token in local storage, use token to request info from server
 class Login extends Component {
     constructor(props) {
         super(props)
@@ -25,40 +25,32 @@ class Login extends Component {
             password: this.state.password
 
         }).then(serverResponse => {
-            console.log(serverResponse)
+            
             if (serverResponse.data.message === "ok") {
+                var encrypted = serverResponse.data.token.split('.');
+                var decryptedPL = atob(encrypted[1]);
+                
+                localStorage.setItem("token", serverResponse.data.token)
+                localStorage.setItem("id", decryptedPL)
                 window.location.pathname = '/home';
             }
-            // else if (serverResponse.status === 401){
-                
-            //     this.setState({ error: serverResponse.data.message })
-            // }
+        }).catch((err) => {
+            console.log(err.response);
+            this.setState({ error: err.response.data.message })
         })
 
     }
     render() {
         return (
-            <Layout>
-                {this.state.error.length > 1 ?
 
                     <div className="Login">
-
+                        {this.state.error ? <h1>error message here </h1> : null }
                         <form onSubmit={this.handleSubmit}>
                             <input onChange={this.handleEmail} type="text" name="email" value={this.state.email} placeholder="Email: " />
                             <input onChange={this.handlePW} type="password" name="password" value={this.state.password} placeholder="Password: " />
                             <button type="submit">Login</button>
                         </form>
                     </div>
-                    :
-                    <div className="Login">
-                        <h1>{this.state.error}</h1>
-                        <form onSubmit={this.handleSubmit}>
-                            <input onChange={this.handleEmail} type="text" name="email" value={this.state.email} placeholder="Email: " />
-                            <input onChange={this.handlePW} type="password" name="password" value={this.state.password} placeholder="Password: " />
-                            <button type="submit">Login</button>
-                        </form>
-                    </div>}
-            </Layout>
         );
     }
 }
