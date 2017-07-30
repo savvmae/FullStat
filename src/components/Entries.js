@@ -1,44 +1,44 @@
 import React, { Component } from 'react';
-// import axios from 'axios';
+import axios from 'axios';
 
-import EntryCard from './ActivityCard';
+import EntryCard from './EntryCard';
 
 class Entries extends Component {
-    constructor(props){
-    super(props)
+    constructor(props) {
+        super(props)
 
-    this.state = {
-      activities: ''
+        this.state = {
+            entries: []
+        }
     }
-  }
-  
-  componentWillMount = () => {
-    var id = ;
-        axios.get('/api/activities/' + id )
-        .then(serverResponse => {
-          
-          if(serverResponse.status === 200){
-            this.setState({activities: serverResponse.data});
-            console.log(this.state)
-            
-          }
-            
-        }).catch((err) => {
-            console.log(err.response.data.message);
-            this.setState({ error: err.response.data.message })
-            if (err.response.status === 401){
-              window.location.pathname = "/"
-            }
+
+    componentWillMount = () => {
+        let route = `/api/activities/${localStorage.activity}`;
+        axios.get(route).then(response => {
+            this.setState({ entries: response.data });
         })
-
     }
-  render() {
-    return (
-      <div >
-        
-      </div>
-    );
-  }
+
+
+    render() {
+        let renderEntries = this.state.entries.map((entry) => {
+            return <EntryCard key={entry._id} entry={entry} />
+        })
+        return (
+            <div>
+                <h1> My Activities </h1>
+
+                <div className="row">
+                    <ul className="list pl0 mt0 measure center">
+                        {renderEntries}
+                    </ul>
+                </div>
+
+
+            </div>
+        );
+    }
 }
+
 
 export default Entries;

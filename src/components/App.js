@@ -13,6 +13,9 @@ class App extends Component {
   }
   
   componentWillMount = () => {
+    if(!localStorage.id){
+      window.location.pathname = '/';
+    }
     var id = localStorage.id.split(',')[0].split('"')[3];
         axios.get('/api/users/' + id + '/activities')
         .then(serverResponse => {
@@ -37,7 +40,7 @@ class App extends Component {
     return (
         <div>
             <h1> My Activities </h1>
-
+            {this.state.error ? <h1>{this.state.error} </h1> : null}
             <div className="row">
             {renderActivities}
             </div>

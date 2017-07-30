@@ -1,32 +1,46 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
+import Entries from './Entries'
+
 class ActivityCard extends Component {
     constructor(props) {
         super(props);
+
+        this.state = {
+            entries: []
+        }
+        this.getEntries.bind(this)
     }
 
     _handleDelete = (event) => {
         event.preventDefault();
         let deleteRoute = `/api/activities/${this.props.activity._id}`
         axios.delete(deleteRoute).then(response => {
-            this.props.getAllItems();
+            window.location.pathname = '/home'
         })
     }
-    
+    getEntries = (event) => {
+        event.preventDefault();
+        localStorage.activity = this.props.activity._id;
+        console.log(localStorage.activity)
+        window.location.pathname = `/activities/${this.props.activity._id}`
+    }
+
 
     render() {
         const { activity } = this.props
         return (
             <section className="tc pa3 pa5-ns">
                 <article className="hide-child relative ba b--black-20 mw5 center">
-                    <img src="https://scontent.flhr3-1.fna.fbcdn.net/v/t1.0-1/p320x320/10419949_10105372167674736_5929675618317299881_n.jpg?oh=fa3bbf4311e61e4637b67ef3be89479f&oe=58C28705" className="db" alt="Photo of Jesse Grant" />
+                    <img src="./activity.png"/>
                     <div className="pa2 bt b--black-20">
                         <a className="f6 db link dark-blue hover-blue" href="#">{activity.type}</a>
                         <p className="f6 gray mv1">{activity.description}</p>
-                        <a className="link tc ph3 pv1 db bg-animate bg-dark-blue hover-bg-blue white f6 br1" href="#">See tracked data</a>
+                        <button type="submit" className="link tc ph3 pv1 db bg-animate bg-dark-blue hover-bg-blue white f6 br1" onClick={this.getEntries}>See tracked data</button>
+                        <button className="link tc ph3 pv1 db bg-animate bg-dark-blue hover-bg-blue white f6 br1" onClick={this._handleDelete}>delete activity</button>
                     </div>
-                    
+
                 </article>
             </section>
         )

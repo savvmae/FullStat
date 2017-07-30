@@ -9,7 +9,7 @@ export default class BaseLayout extends Component {
             <footer>
                 <div className="row">
                     <div className="col-lg-12">
-                        <p>Copyright &copy; Dogs R Us 2014</p>
+                        <p>Copyright &copy; Full Stat 2017</p>
                     </div>
                 </div>
             </footer>
