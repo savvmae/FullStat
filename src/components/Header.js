@@ -15,22 +15,22 @@ export default class Header extends Component {
         return (
             <div>
             {localStorage.id ? 
-            <header className="bg-black-90 fixed w-100 ph3 pv3 pv4-ns ph4-m ph5-l">
+            <header className="bg-black z-ind fixed w-100 ph3 pv3 pv4-ns ph4-m ph5-l">
             
-                <nav className="f6 fw6 ttu tracked">
-                
-                    <NavLink to="/home" className="link dim white dib mr3" title="Home">Home</NavLink>
-                    <a className="link dim white dib mr3" href="#" title="About">About</a>
-                    <a className="link dim white dib mr3" href="#" title="Store">Store</a>
-                    <a className="link dim white dib" href="#" title="Contact">Contact</a>
-                    <button onClick={this.handleLogout} type="submit" className="link dim white dib">Logout</button>
+                <nav className="flex row f6 fw6 ttu tracked">
+                    
+                    <NavLink to="/home" activeStyle={{color: "gray"}}className="link dim white dib mr3" title="Home">Home</NavLink>
+                    <div>
+                    <button onClick={this.handleLogout} type="submit" className="button link dim white dib">Logout</button>
+                    </div>
                 </nav>
                 
-            </header>
+            </header>   
             : null }
             </div>
         );
     }
 }
+// <img className="logo" src="./logo-fb.gif" />
 
 

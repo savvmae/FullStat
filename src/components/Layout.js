@@ -12,11 +12,20 @@ export default class Layout extends Component {
     render() {
         return (
             <div>
-                <Header />
+                {localStorage.id ?
+                    <div>
+                        <Header />
 
-                {this.props.children}
+                        {this.props.children}
 
-                <Footer />
+                        <Footer />
+                    </div>
+                    :
+                    <div>
+                        {this.props.children}
+                        <Footer />
+                    </div>
+                }
             </div>
         )
     }

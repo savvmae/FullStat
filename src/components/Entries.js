@@ -14,9 +14,19 @@ class Entries extends Component {
 
     componentWillMount = () => {
         let route = `/api/activities/${localStorage.activity}`;
-        axios.get(route).then(response => {
+        var AuthStr = 'JWT '.concat(localStorage.token);
+        var userInfo = JSON.parse(localStorage.getItem('id'))
+        var userId = userInfo.id
+        axios.get(route,  { headers: { Authorization: AuthStr } })
+        .then(response => {
             this.setState({ entries: response.data });
-        })
+        }).catch((err) => {
+        console.log(err.response.data.message);
+        this.setState({ error: err.response.data.message })
+        if (err.response.status === 401) {
+          window.location.pathname = "/"
+        }
+      })
     }
 
 
