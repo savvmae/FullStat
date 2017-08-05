@@ -5,6 +5,7 @@
 
 body, h1{
     margin: 0px;
+    overflow: hidden;
 }
 
 .nike {
@@ -14,8 +15,12 @@ body, h1{
 .large {
     font-size: 3em;
 }
+.x-large {
+    font-size: 4em;
+}
 .medium {
     font-size: 1.75em;
+    font-weight: 200;
 }
 
 .Login {
@@ -83,6 +88,8 @@ body, h1{
 .link {
     text-decoration: none;
     transition: color .15s ease-in;
+    font-size: 24px;
+    font-family: Nike Bureau
 }
 
 .link:link, .link:visited {
@@ -118,10 +125,10 @@ body, h1{
     color: #357edd;
 }
 
-.hover-dark-gray:hover {
+/* .hover-dark-gray:hover {
 
     background: rgba(208, 203, 208, 0.47);
-}
+} */
 
 .hover-dark-gray:focus {
    
@@ -131,8 +138,12 @@ body, h1{
     background: rgba(0, 0, 0, .5)
 }
 .hover-bg-blue:focus, .hover-bg-blue:hover {
-    background: rgba(52,63,82, .7);
+    background: rgb(114,90,97);
     color: white;
+}
+hover-bg-grayy:focus, .hover-bg-grayy:hover {
+    background: rgba(52,63,82, 1);
+    font-weight: lighter;
 }
 
 .pa3 {
@@ -250,18 +261,22 @@ body, h1{
     -o-background-size: cover;
     background-size: cover;
     height: 100vh;
-    width: 70%;
+    width: 75%;
 }
 .small-left {
     border-left: 3px solid #343F52;
     padding-top: 150px;
-    width: 30%;
+    width: 25%;
     height: 100vh;
     background-color: #D7DBBA;
 }
 
 .rosy {
     color: #343F52;
+}
+.rose {
+    background-color: rgba(52,63,82, 1);
+    box-shadow: 0px 4px 5px 3px rgba(0,0,0,0.75);
 }
 .bg-dim {
     background-color: rgba(114,90,97, .9);
@@ -273,13 +288,13 @@ body, h1{
     /* border: 1px solid #343F52; */
     margin: 10px;
     color: white;
-    background-color: rgb(114,90,97);
+    background-color: rgba(52,63,82, .7);
     border-radius: 8px;
 }
 .bg-whitee {
     background-color: rgba(225, 225, 225, .8);
-    /* border: 1px solid #343F52; */
     border-radius: 20px;
+    box-shadow: 0px 1px 3px 1px rgba(0,0,0,0.75); 
 }
 .padding {
     padding: 10px;
@@ -290,3 +305,93 @@ body, h1{
     flex-wrap: wrap;
     justify-content: center;
 }
+.activity-input {
+    border: none;
+    background: none;
+    cursor: pointer;
+    font-size: 38px;
+    text-align: center;
+}
+.activity-input:focus {
+    border: none;
+    outline: none;
+}
+.button-wrap {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.fifty {
+    width: 50%;
+    font-family: sans-serif;
+    text-transform: uppercase;
+    font-weight: lighter;
+}
+.l-space {
+    letter-spacing: .03em;
+    font-size: 16px;
+    padding: 10px;
+
+}
+.big-b {
+    height: 50px;
+    font-size: 16px;
+    font-family: sans-serif;
+    text-transform: uppercase;
+    padding: 10px;
+    font-weight: lighter;
+}
+
+.title {
+    color: #D7DBBA;
+    text-shadow: 6px 6px 4px rgba( 52,63,82,  1);
+    letter-spacing: .05em;
+    font-size: 86px;
+}
+
+.form-title {
+    font-family: sans-serif;
+    text-transform: uppercase;
+    font-weight: 400;
+}
+
+.ent-wrapper {
+    display: flex;
+    flex-direction: row;
+}
+
+.main {
+    overflow: auto;
+    padding-top: 150px;
+    text-align: center;
+    background: url('../images/watch.jpeg') no-repeat;
+    -webkit-background-size: contain;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    height: 100vh;
+    width: 65%;
+}
+.bg-br {
+    background-color: rgba(212, 202, 206, .9);
+    border-radius: 20px;
+    -webkit-box-shadow: 0px 1px 3px 1px rgba(0,0,0,0.75);
+    box-shadow: 0px 1px 3px 1px rgba(0,0,0,0.75);
+    margin-bottom: 50px;
+    padding: 20px; 
+}
+.small-sec {
+    padding-top: 150px;
+    padding-left: 50px;
+    width: 35%;
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(212, 202, 206, 1);
+    border-left: 3px solid rgba(52,63,82, 1);
+}
+
+.quant {
+    width: 50%;
+}
+
+

@@ -15,7 +15,7 @@ export default class Header extends Component {
         return (
             <div>
             {localStorage.id ? 
-            <header className="bg-black z-ind fixed w-100 ph3 pv3 pv4-ns ph4-m ph5-l">
+            <header className="bg-black z-ind fixed w-100 ph3 pv3 pv4-ns ph4-m ph5-l rose">
             
                 <nav className="flex row f6 fw6 ttu tracked">
                     

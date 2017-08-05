@@ -2,35 +2,20 @@ BACK END TASKS:
 
 ---------- logout route
             --- will need to research destroying token
-
----------- FIND OUT HOW TO SEND TOKEN CORRECTLY
- token currently undefined server side???
+----------- entry not being overwritten if date is duplicate, neeed to fix
 
 
 CLIENT SIDE TASKS:
----------- pick themes/templates
-            ---- tachyons??
 
------------ set up react router for dynamic routes
-            ---- probably first step
-
-
------------ APP (HOME) ROUTE -------
-        should link to /api/users/:id/activities first route
-        contains card component
-
-        card component rendering!!
-
-        
+****************
+                figure out handle delete for activity, shouldn't cause entire re-render, tried to attach method to app.js        
 
             COMPONENTS NEEDED:
 ---------- nav bar & footer
+                ****************FIND OUT WHERE THE F FOOTER WENT****************
         -- both in layout, exclude header only from login and signup routes
         -- set ternary for header(nav bar) to check for token!!
-        --- nav bar and footer need to be separate comps
-
---------- activity card:
-        buttons: update, delete, see entries
+                ******** that works, need to figure out how to destroy local storage more seamlessly, if server gets restarted, local storage persists so sometimes header shows up when it shouldn't
 
 --------- entries:
             can post/update in one, if date exists, api overwrites current value

@@ -70,7 +70,7 @@ render() {
   return (
     <div className="wrapper">
       <div className="main-right">
-        <h1> My Activities </h1>
+        <h1 className="nike x-large title"> My Activities </h1>
         {this.state.error ? <h1>{this.state.error} </h1> : null}
         <div className="wrapper">
           {renderActivities}
@@ -81,19 +81,19 @@ render() {
         <main className="pa4 black-80">
           <form className="measure center">
             <fieldset id="sign_up" className="ba b--transparent ph0 mh0" >
-              <legend className="f4 fw6 ph0 mh0 rosy">Add A New Activity</legend>
+              <legend className="f4 fw6 ph0 mh0 rosy form-title">Add A New Activity</legend>
               {this.state.postError ? <h1> {this.state.postError} </h1> : null}
               <div className="mt3">
-                <label className="db fw6 lh-copy f6" htmlFor="activity">Activity Name</label>
+                <label className="db fw6 lh-copy f6 form-title" htmlFor="activity">Activity Name</label>
                 <input onChange={this.handleActName} className="pa2 input-reset ba bg-transparent hover-bg-blue hover-white w-100" type="text" name="activity-name" id="activity name" value={this.state.newActivityName} />
               </div>
               <div className="mv3">
-                <label className="db fw6 lh-copy f6" htmlFor="description">Description</label>
+                <label className="db fw6 lh-copy f6 form-title" htmlFor="description">Description</label>
                 <input onChange={this.handleActDescription} className="b pa2 input-reset ba bg-transparent hover-bg-blue hover-white w-100" type="text" name="description" id="description" value={this.state.newActivityDescription} />
               </div>
             </fieldset>
             <div className="">
-              <input onClick={this.handleSubmit} className="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib" type="submit" />
+              <input onClick={this.handleSubmit} className="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib form-title" type="submit" />
             </div>
           </form>
         </main>
