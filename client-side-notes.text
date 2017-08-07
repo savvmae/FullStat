@@ -1,23 +1,17 @@
-BACK END TASKS:
-
+*****************
+                WORK ON RESPONSIVE
+*****************
 ---------- logout route
             --- will need to research destroying token
------------ entry not being overwritten if date is duplicate, neeed to fix
+                    -- set ternary for header(nav bar) to check for token!!
+                ******** that works, need to figure out how to destroy local storage more seamlessly, if server gets restarted, local storage persists so sometimes header shows up when it shouldn't
 
 
 CLIENT SIDE TASKS:
 
 ****************
-                figure out handle delete for activity, shouldn't cause entire re-render, tried to attach method to app.js        
+                figure out handle delete for activity & entry, shouldn't cause entire re-render, tried to attach method to app.js, look into redux for this?       
 
             COMPONENTS NEEDED:
 ---------- nav bar & footer
                 ****************FIND OUT WHERE THE F FOOTER WENT****************
-        -- both in layout, exclude header only from login and signup routes
-        -- set ternary for header(nav bar) to check for token!!
-                ******** that works, need to figure out how to destroy local storage more seamlessly, if server gets restarted, local storage persists so sometimes header shows up when it shouldn't
-
---------- entries:
-            can post/update in one, if date exists, api overwrites current value
---------- card:
-        buttons: delete data for day

@@ -27,7 +27,7 @@ class App extends Component {
       .then(serverResponse => {
 
         if (serverResponse.status === 200) {
-          this.setState({ activities: serverResponse.data });
+          this.setState({ activities: serverResponse.data, postError: '' });
         }
 
       }).catch((err) => {
@@ -60,8 +60,14 @@ class App extends Component {
         description: this.state.newActivityDescription
       }}).then(serverResponse => {
       this.componentWillMount();
-      this.setState({newActivityDescription: '', newActivityName: ''})
-    })
+      this.setState({newActivityDescription: '', newActivityName: '', error: '', postError: ''})
+    }).catch((err) => {
+        console.log(err.response.data.message);
+        this.setState({ postError: err.response.data.message })
+        if (err.response.status === 401) {
+          window.location.pathname = "/"
+        }
+      })
 }
 render() {
   let renderActivities = this.state.activities.map((activity) => {
@@ -70,8 +76,7 @@ render() {
   return (
     <div className="wrapper">
       <div className="main-right">
-        <h1 className="nike x-large title"> My Activities </h1>
-        {this.state.error ? <h1>{this.state.error} </h1> : null}
+         {this.state.error ? <div> <p className="nike x-large title"> {this.state.error} </p> <p className="nike x-large title"> To get started, add an activity! </p> </div> : <div className="nike x-large title"> My Activities </div> }
         <div className="wrapper">
           {renderActivities}
         </div>
@@ -82,14 +87,14 @@ render() {
           <form className="measure center">
             <fieldset id="sign_up" className="ba b--transparent ph0 mh0" >
               <legend className="f4 fw6 ph0 mh0 rosy form-title">Add A New Activity</legend>
-              {this.state.postError ? <h1> {this.state.postError} </h1> : null}
+              {this.state.postError ? <h1 className="f4 fw6 ph0 mh0 rosy form-title"> {this.state.postError} </h1> : null}
               <div className="mt3">
-                <label className="db fw6 lh-copy f6 form-title" htmlFor="activity">Activity Name</label>
+                <label className="db fw6 lh-copy f6 form-title" htmlFor="activity">Activity Name!</label>
                 <input onChange={this.handleActName} className="pa2 input-reset ba bg-transparent hover-bg-blue hover-white w-100" type="text" name="activity-name" id="activity name" value={this.state.newActivityName} />
               </div>
               <div className="mv3">
-                <label className="db fw6 lh-copy f6 form-title" htmlFor="description">Description</label>
-                <input onChange={this.handleActDescription} className="b pa2 input-reset ba bg-transparent hover-bg-blue hover-white w-100" type="text" name="description" id="description" value={this.state.newActivityDescription} />
+                <label className="db fw6 lh-copy f6 form-title" htmlFor="description">The Measurement you'll be tracking!</label>
+                <input onChange={this.handleActDescription} className="pa2 input-reset ba bg-transparent hover-bg-blue hover-white w-100" type="text" name="description" id="description" value={this.state.newActivityDescription} />
               </div>
             </fieldset>
             <div className="">

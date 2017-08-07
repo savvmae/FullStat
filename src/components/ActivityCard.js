@@ -89,8 +89,8 @@ class ActivityCard extends Component {
                         <img className="padding" src="./running-man.png" />
                         <div className="pa2 b--black-20">
                             <form className="activity-form">
-                                <input onChange={this.handleType} onFocus={this.clearText} onBlur={this.putActText} className="activity-input nike medium" value={this.state.activity} />
-                                <input onChange={this.handleDesc} onFocus={this.clearText} onBlur={this.putDescText} className="activity-input nike medium" value={this.state.description} />
+                                <input onChange={this.handleType} onFocus={this.clearText} onBlur={this.putActText} className="activity-input nike two-em le-space" value={this.state.activity} />
+                                <input onChange={this.handleDesc} onFocus={this.clearText} onBlur={this.putDescText} className="activity-input nike two-em le-space" value={this.state.description} />
                                 <div className="button-wrap">
                                     <button type="submit" className="link tc ph3 pv1 db bg-animate bg-green hover-bg-blue white br1 fifty nike l-space" onClick={this.handleUpdate}>update</button>
                                     <button className="link tc ph3 pv1 db bg-animate bg-green hover-bg-blue white br1 fifty nike l-space" onClick={this._handleDelete}>delete</button>
