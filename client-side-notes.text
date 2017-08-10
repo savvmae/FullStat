@@ -4,6 +4,7 @@
 ---------- logout route
             --- will need to research destroying token
                     -- set ternary for header(nav bar) to check for token!!
+                        find out why head and footer load even though we get redirected to login???
                 ******** that works, need to figure out how to destroy local storage more seamlessly, if server gets restarted, local storage persists so sometimes header shows up when it shouldn't
 
 
@@ -12,6 +13,3 @@ CLIENT SIDE TASKS:
 ****************
                 figure out handle delete for activity & entry, shouldn't cause entire re-render, tried to attach method to app.js, look into redux for this?       
 
-            COMPONENTS NEEDED:
----------- nav bar & footer
-                ****************FIND OUT WHERE THE F FOOTER WENT****************
